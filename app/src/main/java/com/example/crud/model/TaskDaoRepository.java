@@ -50,4 +50,31 @@ public class TaskDaoRepository {
         }
         return list;
     }
+
+    public boolean update(Task task){
+        sqLiteDatabase = database.getWritableDatabase();
+        if(task.getIdTask() != null){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("idTask",task.getIdTask());
+            contentValues.put("title",task.getTitle());
+            contentValues.put("message",task.getTask());
+            int result = sqLiteDatabase.update("task",contentValues,"where idTask = ?",new String[task.getIdTask()]);
+            if(result != -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean delete(int idTask){
+        sqLiteDatabase = database.getWritableDatabase();
+        if((Integer)idTask != null){
+            int result = sqLiteDatabase.delete("task","where idTask = ?",new String[idTask]);
+            if(result != -1){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
