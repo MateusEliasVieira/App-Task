@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.crud.adapter.Adapter;
 import com.example.crud.entity.Task;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class TaskDaoRepository {
 
-    private Database database;
+    private static Database database;
     private SQLiteDatabase sqLiteDatabase;
 
     public TaskDaoRepository(Context context){
